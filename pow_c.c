@@ -245,22 +245,5 @@ char *PowC(char *trytes, int mwm, int index)
     
     Trytes *nonce = nonce_t->toTrytes(nonce_t);
 
-    int rst_len = trytes_t->len - NonceTrinarySize / 3 + nonce->len;
-    char *rst = (char *) malloc(rst_len);
-    
-    for (int i = 0; i < trytes_t->len - NonceTrinarySize / 3; i++) {
-        rst[i] = trytes_t->data[i];
-    }
-    for (int i = 0; i < rst_len - (trytes_t->len - NonceTrinarySize / 3); i++) {
-        int idx = trytes_t->len - NonceTrinarySize / 3 + i;
-        rst[idx] = nonce->data[i];
-    }
-
-    Trytes *last = NULL;
-    init_Trytes(&last);
-    last->toTrytes(last, rst, rst_len);
-
-    Trytes *last_result = last->Hash(last);
-
-    return last_result->data;
+    return nonce->data;
 }
