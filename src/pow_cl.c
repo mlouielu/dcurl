@@ -184,11 +184,13 @@ static char *tx_to_cstate(Trytes *tx)
     return c_state;
 }
 
-char *PowCL(char *trytes, int mwm, int index)
+char *PowCL(char *trits, int mwm, int index)
 {
-	Trytes *trytes_t = NULL;
-    init_Trytes(&trytes_t);
-    trytes_t->toTrytes(trytes_t, trytes, 2673);
+    Trits *trits_t = NULL;
+    init_Trits(&trits_t);
+    trits_t->toTrits(trits_t, trits, 8019);
+
+	Trytes *trytes_t = trits_t->toTrytes(trits_t);
     
     Trits *tr = trytes_t->toTrits(trytes_t);
 

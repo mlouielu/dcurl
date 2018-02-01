@@ -251,14 +251,16 @@ static Trytes *nonce_to_result(Trytes *tx, Trytes *nonce)
     return final->Hash(final);
 }
 
-char *PowSSE(char *trytes, int mwm, int index)
+char *PowSSE(char *trits, int mwm, int index)
 {
     stopSSE[index] = 0;
     countSSE[index] = 0;
 
-    Trytes *trytes_t = NULL;
-    init_Trytes(&trytes_t);
-    trytes_t->toTrytes(trytes_t, trytes, 2673);
+    Trits *trits_t = NULL;
+    init_Trits(&trits_t);
+    trits_t->toTrits(trits_t, trits, 8019);
+
+    Trytes *trytes_t = trits_t->toTrytes(trits_t);
     
     char *c_state = tx_to_cstate(trytes_t);
 
