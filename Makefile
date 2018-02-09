@@ -60,5 +60,7 @@ test: test_trinary \
 	  test_pow_cl \
 	  test_dcurl
 
+plot: 
+
 clean:
 	rm build/*.o test_trinary test_curl test_pow_sse test_pow_cl test_dcurl
